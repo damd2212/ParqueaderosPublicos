@@ -89,7 +89,7 @@ public class CtrlRegVehiculo implements ActionListener {
                     regVehi.setRegNumCasillero(Integer.parseInt(null));
                 }
                 
-                if (conVehi.buscar(vehi)==false) {
+                if (conVehi.buscar(vehi) == 0) {
                     conVehi.registrar(vehi);
                 }
                 

@@ -7,6 +7,7 @@ package co.unicauca.proyecto.parqueaderospop.modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -20,6 +21,7 @@ public class ConsultasVehiculo extends Conexion {
         //variable para realizar transacciones a MySQL
         PreparedStatement ps = null;
         Connection con = getConnection();
+        
          //consulta sql
         String sql = "INSERT INTO vehiculo (placaVehiculo,tipoVehiculo) VALUES(?,?)";//realizamos consulta en este caso un insert
     
@@ -42,21 +44,26 @@ public class ConsultasVehiculo extends Conexion {
         }
     }
     
-    public boolean buscar(Vehiculo vehi){
+    public int buscar(Vehiculo vehi){
+        int conteo = 0;
         PreparedStatement ps = null;
         Connection cone = getConnection();
+        ResultSet rs;
         
-        String sqlb = "SELECT * FROM vehiculo WHERE  placaVehiculo = ?";
+        String sqlb = "SELECT count(*) FROM vehiculo WHERE  placaVehiculo = ?";
         
         try{
             ps = cone.prepareStatement(sqlb);
-            
             ps.setString(1, vehi.getPlacaVehiculo());
-            ps.execute();
-            return true;
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                conteo = rs.getInt(1);
+            }
+            return conteo;
         }catch(SQLException e){
             System.err.println(e);
-            return false;
+            return conteo;
         }finally{
             try{
                 cone.close();

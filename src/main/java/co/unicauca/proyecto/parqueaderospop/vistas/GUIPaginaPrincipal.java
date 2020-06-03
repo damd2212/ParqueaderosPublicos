@@ -37,9 +37,11 @@ public class GUIPaginaPrincipal extends javax.swing.JFrame {
 
         btnRegVehiParque = new javax.swing.JButton();
         btnRegParqueadero = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        btnRegVehiculo = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
+        jDescMenuPrincipal = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        btnRegVehiculo = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         btnRegVehiParque.setText("Registrar Vehiculo en el parqueadero");
 
@@ -49,88 +51,71 @@ public class GUIPaginaPrincipal extends javax.swing.JFrame {
         setTitle("Parqueaderos Popayán");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        javax.swing.GroupLayout jDescMenuPrincipalLayout = new javax.swing.GroupLayout(jDescMenuPrincipal);
+        jDescMenuPrincipal.setLayout(jDescMenuPrincipalLayout);
+        jDescMenuPrincipalLayout.setHorizontalGroup(
+            jDescMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 709, Short.MAX_VALUE)
+        );
+        jDescMenuPrincipalLayout.setVerticalGroup(
+            jDescMenuPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 448, Short.MAX_VALUE)
+        );
 
-        btnRegVehiculo.setBackground(new java.awt.Color(255, 255, 255));
-        btnRegVehiculo.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
+        jMenu1.setText("Opciones");
+
         btnRegVehiculo.setText("Registrar Vehiculo");
         btnRegVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegVehiculoActionPerformed(evt);
             }
         });
+        jMenu1.add(btnRegVehiculo);
 
-        btnSalir.setBackground(new java.awt.Color(255, 255, 255));
-        btnSalir.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
+        jMenuBar1.add(jMenu1);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(btnRegVehiculo)
-                .addContainerGap(77, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalir)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(btnRegVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jMenu2.setText("Ayudas");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDescMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDescMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        
-        System.exit(0);
-    }//GEN-LAST:event_btnSalirActionPerformed
-    //invoca a la vista GUIRegistrarPrincipal y ademas hace un llamado el controlador CtrlRegVehiculo
     private void btnRegVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegVehiculoActionPerformed
-       
+        // TODO add your handling code here:
         java.awt.EventQueue.invokeLater(new Runnable(){
-           public void run(){
-               GUIRegistrarVehiculo reg = new GUIRegistrarVehiculo();
-               
-               reg.setLocation(700,200);
-               
-               
-               Vehiculo vehi = new Vehiculo();
-               ConsultasVehiculo conVehi = new ConsultasVehiculo();    
-               RegistroVehiculo clsregVehiculo = new RegistroVehiculo();
-               ConsultasRegVehiculo conRegVehi = new ConsultasRegVehiculo();
-               Ficha fi = new Ficha();
-               ConsultasFicha conFi = new ConsultasFicha();
-               CtrlRegVehiculo ctrlRegVehiculo = new CtrlRegVehiculo(clsregVehiculo,conRegVehi,vehi,conVehi,fi,conFi,reg);
-               ctrlRegVehiculo.iniciar();
-               reg.setVisible(true);
-               //new GUIPaginaPrincipal().setVisible(false);
-           } 
+            public void run(){
+                GUIRegistrarVehiculo reg = new GUIRegistrarVehiculo();
+
+                reg.setLocation(700,200);
+
+                Vehiculo vehi = new Vehiculo();
+                ConsultasVehiculo conVehi = new ConsultasVehiculo();
+                RegistroVehiculo clsregVehiculo = new RegistroVehiculo();
+                ConsultasRegVehiculo conRegVehi = new ConsultasRegVehiculo();
+                Ficha fi = new Ficha();
+                ConsultasFicha conFi = new ConsultasFicha();
+                CtrlRegVehiculo ctrlRegVehiculo = new CtrlRegVehiculo(clsregVehiculo,conRegVehi,vehi,conVehi,fi,conFi,reg);
+                ctrlRegVehiculo.iniciar();
+                reg.setVisible(true);
+                //new GUIPaginaPrincipal().setVisible(false);
+            }
         });
     }//GEN-LAST:event_btnRegVehiculoActionPerformed
 
@@ -172,8 +157,10 @@ public class GUIPaginaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegParqueadero;
     public javax.swing.JButton btnRegVehiParque;
-    private javax.swing.JButton btnRegVehiculo;
-    private javax.swing.JButton btnSalir;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem btnRegVehiculo;
+    private javax.swing.JDesktopPane jDescMenuPrincipal;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
