@@ -51,7 +51,6 @@ public class CtrlRegVehiculo implements ActionListener {
         this.conFi = conFi;
         this.frmRegVehi = frmRegVehi;
         this.frmRegVehi.btnGuardar.addActionListener(this);
-        this.frmRegVehi.btnVincular.addActionListener(this);
     }
     //Con este metodo se le da un titulo a la vista y ademos se restablecce lo localizacion
     public void iniciar(){
@@ -86,36 +85,23 @@ public class CtrlRegVehiculo implements ActionListener {
                 }
                 regVehi.setRegNumCascos(Integer.parseInt(frmRegVehi.jcmbNumCascos.getSelectedItem().toString()));
                 regVehi.setRegNitParqueadero(1);
-                //regVehi.setRegNumCasillero(Integer.parseInt(frmRegVehi.jtxtFCasillero.getText()));
                 if (frmRegVehi.jtxtFCasillero.getText() == null) {
                     regVehi.setRegNumCasillero(Integer.parseInt(null));
                 }
-                if (conRegVehi.registrar(regVehi) && conVehi.registrar(vehi)){
-                    JOptionPane.showMessageDialog(null, "Registros guardados");
-                    frmRegVehi.btnGuardar.setEnabled(false);
+                
+                if (conVehi.buscar(vehi)==false) {
+                    conVehi.registrar(vehi);
+                }
+                
+                if (conRegVehi.registrar(regVehi)){
+                    JOptionPane.showMessageDialog(null, "Registro guardado");
                     limpiar();
                 }else{
-                    JOptionPane.showMessageDialog(null, "Registro NO guardados");
+                    JOptionPane.showMessageDialog(null, "Registro NO guardado");
                 }   
             }          
         }
-        if(e.getSource() == frmRegVehi.btnVincular){
-            if (frmRegVehi.jtxtFNumFicha.getText().isEmpty() || frmRegVehi.jtxtFPlaca.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "El campo Numero de ficha o el campo de Placa No pueden estar vacios");
-            }else{
-                fi.setNumFicha(Integer.parseInt(frmRegVehi.jtxtFNumFicha.getText()));
-                fi.setEstado("Vinculado");
-                fi.setTipoVehiculo(frmRegVehi.jcmbTipoVehiculo.getSelectedItem().toString());
-                fi.setHoraFechaEntrada(frmRegVehi.jtxtFHoraFecha.getText());
-                if (conFi.registrar(fi)) {
-                    JOptionPane.showMessageDialog(null, "Vinculo Realizado");
-                    frmRegVehi.btnGuardar.setEnabled(true);
-                }else{
-                    JOptionPane.showMessageDialog(null, "Vinculo NO Realizado");
-                    frmRegVehi.btnGuardar.setEnabled(false);
-                }
-            }
-        }
+
     }
     
     
@@ -126,6 +112,7 @@ public class CtrlRegVehiculo implements ActionListener {
         frmRegVehi.jtxtFNumFicha.setText(null);
         frmRegVehi.jtxtFPlaca.setText(null);
         frmRegVehi.jcmbTipoVehiculo.setSelectedItem("Carro");
+        frmRegVehi.jcmbNumCascos.setSelectedItem("0");
         
         Date date =  new Date();
         DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");  

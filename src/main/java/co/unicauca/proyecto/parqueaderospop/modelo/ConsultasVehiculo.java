@@ -42,5 +42,29 @@ public class ConsultasVehiculo extends Conexion {
         }
     }
     
+    public boolean buscar(Vehiculo vehi){
+        PreparedStatement ps = null;
+        Connection cone = getConnection();
+        
+        String sqlb = "SELECT * FROM vehiculo WHERE  placaVehiculo = ?";
+        
+        try{
+            ps = cone.prepareStatement(sqlb);
+            
+            ps.setString(1, vehi.getPlacaVehiculo());
+            ps.execute();
+            return true;
+        }catch(SQLException e){
+            System.err.println(e);
+            return false;
+        }finally{
+            try{
+                cone.close();
+            }catch(SQLException e){
+                System.err.println(e);
+            }
+        }
+               
+    }
     
 }

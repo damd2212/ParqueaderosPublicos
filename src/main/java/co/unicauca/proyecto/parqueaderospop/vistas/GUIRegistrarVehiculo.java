@@ -25,7 +25,6 @@ public class GUIRegistrarVehiculo extends javax.swing.JFrame {
         initComponents();
         jcmbNumCascos.setEnabled(false);//desactiva el numero de numero de cascos
         jtxtFCasillero.setEnabled(false);//desactiva la caja casillero
-        btnGuardar.setEnabled(false);//desactiva el boton guardar
         
     }
 
@@ -49,7 +48,6 @@ public class GUIRegistrarVehiculo extends javax.swing.JFrame {
         jchbLlaves = new javax.swing.JCheckBox();
         jlbNumCascos = new javax.swing.JLabel();
         jcmbNumCascos = new javax.swing.JComboBox<>();
-        btnVincular = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -87,14 +85,6 @@ public class GUIRegistrarVehiculo extends javax.swing.JFrame {
         jlbNumCascos.setText("Numero de cascos");
 
         jcmbNumCascos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2" }));
-
-        btnVincular.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        btnVincular.setText("Vincular");
-        btnVincular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVincularActionPerformed(evt);
-            }
-        });
 
         btnGuardar.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
         btnGuardar.setText("Guardar");
@@ -164,13 +154,12 @@ public class GUIRegistrarVehiculo extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jlbNumCascos))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnVincular)
-                                .addGap(39, 39, 39)
-                                .addComponent(btnGuardar))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(45, 45, 45)
-                                .addComponent(jtxtFCasillero, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jtxtFCasillero, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnGuardar)
+                                .addGap(68, 68, 68)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jcmbNumCascos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
@@ -207,11 +196,9 @@ public class GUIRegistrarVehiculo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtxtFCasillero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnVincular))
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(btnGuardar)
+                .addGap(37, 37, 37)
                 .addComponent(btnRegresar)
                 .addGap(28, 28, 28))
         );
@@ -231,15 +218,6 @@ public class GUIRegistrarVehiculo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnVincularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVincularActionPerformed
-        // TODO add your handling code here:
-//        if (jtxtFNumFicha.getText().isEmpty() || jtxtFPlaca.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(null, "El campo Numero de ficha o el campo placa no pueden estar vacios");
-//        }else{
-//            JOptionPane.showMessageDialog(null, "Ficha Vinculada de forma correcta");
-//        }
-    }//GEN-LAST:event_btnVincularActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
@@ -325,7 +303,6 @@ public class GUIRegistrarVehiculo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnGuardar;
     public javax.swing.JButton btnRegresar;
-    public javax.swing.JButton btnVincular;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JCheckBox jchbLlaves;
